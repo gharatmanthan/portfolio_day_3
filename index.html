@@ -31,17 +31,71 @@
     .brand-gradient {
       background: linear-gradient(90deg, #2563eb 0%, #38bdf8 100%);
       -webkit-background-clip: text;
+      background-clip: text;
       -webkit-text-fill-color: transparent;
       transition: background 0.4s;
     }
     .brand-gradient:hover {
       background: linear-gradient(90deg, #38bdf8 0%, #2563eb 100%);
       -webkit-background-clip: text;
+      background-clip: text;
       -webkit-text-fill-color: transparent;
     }
     /* Hamburger tap animation */
     .tap:active {
       transform: scale(0.9);
+    }
+    /* Section fade-in animation */
+    .fade-section {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.8s cubic-bezier(.4,0,.2,1), transform 0.8s cubic-bezier(.4,0,.2,1);
+    }
+    .fade-section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    /* Card hover animation */
+    .card-animate {
+      transition: transform 0.4s cubic-bezier(.4,0,.2,1), box-shadow 0.4s cubic-bezier(.4,0,.2,1);
+    }
+    .card-animate:hover {
+      transform: translateY(-8px) scale(1.03) rotate(-1deg);
+      box-shadow: 0 10px 32px 0 rgba(59,130,246,0.15);
+    }
+    /* Button pulse animation */
+    .btn-animate {
+      transition: transform 0.2s cubic-bezier(.4,0,.2,1), box-shadow 0.2s;
+    }
+    .btn-animate:hover {
+      transform: scale(1.07) translateY(-2px);
+      box-shadow: 0 4px 16px 0 rgba(59,130,246,0.15);
+    }
+    /* Image pop animation */
+    .img-animate {
+      transition: transform 0.4s cubic-bezier(.4,0,.2,1), box-shadow 0.4s;
+    }
+    .img-animate:hover {
+      transform: scale(1.08) rotate(-2deg);
+      box-shadow: 0 8px 32px 0 rgba(59,130,246,0.18);
+    }
+    /* Link underline animation */
+    .link-animate {
+      position: relative;
+      transition: color 0.2s;
+    }
+    .link-animate::after {
+      content: '';
+      position: absolute;
+      left: 0; bottom: -2px;
+      width: 100%; height: 2px;
+      background: linear-gradient(90deg, #2563eb 0%, #38bdf8 100%);
+      transform: scaleX(0);
+      transition: transform 0.3s cubic-bezier(.4,0,.2,1);
+      transform-origin: left;
+    }
+    .link-animate:hover::after {
+      transform: scaleX(1);
     }
   </style>
 </head>
@@ -65,39 +119,39 @@
     </button>
     <!-- Nav Items -->
     <ul id="nav-items" class="flex gap-6 text-blue-800 font-semibold md:flex hidden flex-col md:flex-row absolute md:static top-20 left-0 w-full md:w-auto bg-white/95 md:bg-transparent shadow md:shadow-none rounded-b-2xl md:rounded-none px-8 md:px-0 py-6 md:py-0 z-40 transition-all duration-300">
-      <li><a href="#about" class="hover:text-blue-600 hover:scale-110 transition-transform duration-200">About</a></li>
-      <li><a href="#projects" class="hover:text-blue-600 hover:scale-110 transition-transform duration-200">Projects</a></li>
-      <li><a href="#goals" class="hover:text-blue-600 hover:scale-110 transition-transform duration-200">Goals</a></li>
-      <li><a href="#contact" class="hover:text-blue-600 hover:scale-110 transition-transform duration-200">Contact</a></li>
+      <li><a href="#about" class="hover:text-blue-600 hover:scale-110 transition-transform duration-200 link-animate">About</a></li>
+      <li><a href="#projects" class="hover:text-blue-600 hover:scale-110 transition-transform duration-200 link-animate">Projects</a></li>
+      <li><a href="#goals" class="hover:text-blue-600 hover:scale-110 transition-transform duration-200 link-animate">Goals</a></li>
+      <li><a href="#contact" class="hover:text-blue-600 hover:scale-110 transition-transform duration-200 link-animate">Contact</a></li>
     </ul>
   </nav>
 
   <!-- Hero Section -->
-  <section class="flex flex-col md:flex-row items-center gap-8 mb-12 px-4" id="hero">
+  <section class="flex flex-col md:flex-row items-center gap-8 mb-12 px-4 fade-section">
     <img src="images/IMG_20241204_0001.jpg" alt="Profile photo of Manthan Gharat"
-      class="profile-photo w-40 h-40 rounded-full border-4 border-blue-300 shadow-lg object-cover transition-transform duration-200 hover:scale-105 hover:-rotate-2" />
+      class="profile-photo img-animate w-40 h-40 rounded-full border-4 border-blue-300 shadow-lg object-cover transition-transform duration-200 hover:scale-105 hover:-rotate-2" />
     <div>
       <h1 class="text-4xl md:text-5xl font-bold mb-2 tracking-wide">Hi, I'm Manthan Gharat</h1>
       <p class="text-lg text-gray-700 mb-4 max-w-xl">Aspiring Full Stack Developer | B.Tech in Computer Engineering | Passionate about building elegant, impactful web solutions.</p>
       <div class="flex gap-4 mt-2">
-        <a href="https://github.com/gharatmanthan" target="_blank" class="hover:text-gray-700">GitHub</a>
-        <a href="https://linkedin.com/in/ManthanGharat" target="_blank" class="hover:text-blue-700">LinkedIn</a>
-        <a href="https://instagram.com/ManthanGharat4" target="_blank" class="hover:text-pink-600">Instagram</a>
+        <a href="https://github.com/gharatmanthan" target="_blank" class="hover:text-gray-700 link-animate">GitHub</a>
+        <a href="https://linkedin.com/in/ManthanGharat" target="_blank" class="hover:text-blue-700 link-animate">LinkedIn</a>
+        <a href="https://instagram.com/ManthanGharat4" target="_blank" class="hover:text-pink-600 link-animate">Instagram</a>
       </div>
     </div>
   </section>
 
   <!-- Intro Video Section -->
-<section id="intro-video" class="flex flex-col items-center justify-center mb-12 px-4">
-  <h2 class="text-2xl font-semibold text-blue-700 mb-4">Intro Video</h2>
-  <video controls class="rounded-xl shadow-lg w-full max-w-xl bg-black">
-    <source src="images/Web Design Promotional Video - After Effects Template.mp4" type="video/mp4">
-    Your browser does not support the video tag.
-  </video>
-</section>
+  <section id="intro-video" class="flex flex-col items-center justify-center mb-12 px-4 fade-section">
+    <h2 class="text-2xl font-semibold text-blue-700 mb-4">Intro Video</h2>
+    <video controls class="rounded-xl shadow-lg w-full max-w-xl bg-black img-animate">
+      <source src="images/Web Design Promotional Video - After Effects Template.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+  </section>
 
   <!-- About Me Section -->
-  <section id="about" class="bg-white/90 rounded-xl shadow p-8 mb-12 max-w-3xl mx-auto">
+  <section id="about" class="bg-white/90 rounded-xl shadow p-8 mb-12 max-w-3xl mx-auto fade-section">
     <h2 class="text-2xl font-semibold text-blue-700 mb-4">About Me</h2>
     <p class="mb-2"><strong>Name:</strong> Manthan Gharat</p>
     <p class="mb-2"><strong>Location:</strong> Palghar</p>
@@ -107,59 +161,59 @@
   </section>
 
   <!-- Projects Section -->
-  <section id="projects" class="max-w-3xl mx-auto mb-12 px-4">
+  <section id="projects" class="max-w-3xl mx-auto mb-12 px-4 fade-section">
     <h2 class="text-2xl font-semibold text-blue-700 mb-6 text-center">Projects</h2>
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 justify-items-center">
       <!-- Example Project Card -->
-      <div class="bg-white rounded-xl shadow hover:shadow-xl transition p-6 flex flex-col items-center group text-center w-full">
+      <div class="bg-white rounded-xl shadow card-animate p-6 flex flex-col items-center group text-center w-full">
         <h3 class="text-lg font-bold mb-2 group-hover:text-blue-600 transition">Portfolio Website</h3>
         <p class="text-gray-600 mb-4">A responsive personal portfolio built with HTML, Tailwind CSS, and JavaScript, featuring dynamic data and a contact form.</p>
-        <a href="#" class="mt-auto text-blue-500 hover:underline">View Project</a>
+        <a href="#" class="mt-auto text-blue-500 hover:underline link-animate">View Project</a>
       </div>
-      <div class="bg-white rounded-xl shadow hover:shadow-xl transition p-6 flex flex-col items-center group text-center w-full">
+      <div class="bg-white rounded-xl shadow card-animate p-6 flex flex-col items-center group text-center w-full">
         <h3 class="text-lg font-bold mb-2 group-hover:text-blue-600 transition">Weather App</h3>
         <p class="text-gray-600 mb-4">A simple weather dashboard using a public API, showing real-time weather for any city.</p>
-        <a href="#" class="mt-auto text-blue-500 hover:underline">View Project</a>
+        <a href="#" class="mt-auto text-blue-500 hover:underline link-animate">View Project</a>
       </div>
     </div>
   </section>
 
   <!-- Future Goals Section -->
-<section id="goals" class="section bg-blue-50 rounded-xl mb-6 p-6 shadow transition-colors duration-300">
-  <h2 class="text-blue-700 mb-4 text-2xl font-semibold tracking-wide">Future Goals</h2>
-  <p>
-    Focus on mastering a full-stack JavaScript stack (React, Node, PostgreSQL) by completing an online course and rebuilding three classic apps, while pushing code to GitHub daily; ship two polished portfolio projects that solve real problems and include tests, CI/CD, and live demos; contribute at least five pull requests to open-source repos; practice 200 LeetCode problems plus weekly mock interviews to nail data-structures, algorithms, and system design; craft an ATS-ready one-page résumé and showcase projects on LinkedIn; attend three dev meetups per semester and follow up with new contacts; apply to 15 internships or freelance gigs each month until placed; stay current with a weekly tech newsletter and publish a monthly blog post, all while scheduling regular exercise and one screen-free day each month to prevent burnout and keep motivation high.
-  </p>
-</section>
+  <section id="goals" class="section bg-blue-50 rounded-xl mb-6 p-6 shadow transition-colors duration-300 fade-section">
+    <h2 class="text-blue-700 mb-4 text-2xl font-semibold tracking-wide">Future Goals</h2>
+    <p>
+      Focus on mastering a full-stack JavaScript stack (React, Node, PostgreSQL) by completing an online course and rebuilding three classic apps, while pushing code to GitHub daily; ship two polished portfolio projects that solve real problems and include tests, CI/CD, and live demos; contribute at least five pull requests to open-source repos; practice 200 LeetCode problems plus weekly mock interviews to nail data-structures, algorithms, and system design; craft an ATS-ready one-page résumé and showcase projects on LinkedIn; attend three dev meetups per semester and follow up with new contacts; apply to 15 internships or freelance gigs each month until placed; stay current with a weekly tech newsletter and publish a monthly blog post, all while scheduling regular exercise and one screen-free day each month to prevent burnout and keep motivation high.
+    </p>
+  </section>
 
-<!-- Hobbies Section (populated by JS) -->
-<section id="hobbies" class="section bg-blue-50 rounded-xl mb-6 p-6 shadow transition-colors duration-300">
-  <h2 class="text-blue-700 mb-4 text-2xl font-semibold tracking-wide">Hobbies</h2>
-  <ul id="hobbies-list" class="list-disc pl-6 mt-2 space-y-1"></ul>
-</section>
+  <!-- Hobbies Section (populated by JS) -->
+  <section id="hobbies" class="section bg-blue-50 rounded-xl mb-6 p-6 shadow transition-colors duration-300 fade-section">
+    <h2 class="text-blue-700 mb-4 text-2xl font-semibold tracking-wide">Hobbies</h2>
+    <ul id="hobbies-list" class="list-disc pl-6 mt-2 space-y-1"></ul>
+  </section>
 
-<!-- Role Models Section -->
-<section id="role-models" class="section bg-blue-50 rounded-xl mb-6 p-6 shadow transition-colors duration-300">
-  <h2 class="text-blue-700 mb-4 text-2xl font-semibold tracking-wide">Role Models</h2>
-  <p>
-    My role model is Elon Musk because he consistently turns bold, seemingly impossible ideas—reusable rockets, mass-market EVs, global satellite internet—into reality by pairing relentless curiosity with calculated risk-taking, proving that audacious vision backed by deep technical engagement and a “first-principles” mindset can reshape entire industries and push humanity forward.
-  </p>
-</section>
+  <!-- Role Models Section -->
+  <section id="role-models" class="section bg-blue-50 rounded-xl mb-6 p-6 shadow transition-colors duration-300 fade-section">
+    <h2 class="text-blue-700 mb-4 text-2xl font-semibold tracking-wide">Role Models</h2>
+    <p>
+      My role model is Elon Musk because he consistently turns bold, seemingly impossible ideas—reusable rockets, mass-market EVs, global satellite internet—into reality by pairing relentless curiosity with calculated risk-taking, proving that audacious vision backed by deep technical engagement and a “first-principles” mindset can reshape entire industries and push humanity forward.
+    </p>
+  </section>
 
-<!-- Favorite Books Section (populated by JS) -->
-<section id="favorite-books" class="section bg-blue-50 rounded-xl mb-6 p-6 shadow transition-colors duration-300">
-  <h2 class="text-blue-700 mb-4 text-2xl font-semibold tracking-wide">Favorite Books</h2>
-  <ul id="books-list" class="list-disc pl-6 mt-2 space-y-1"></ul>
-</section>
+  <!-- Favorite Books Section (populated by JS) -->
+  <section id="favorite-books" class="section bg-blue-50 rounded-xl mb-6 p-6 shadow transition-colors duration-300 fade-section">
+    <h2 class="text-blue-700 mb-4 text-2xl font-semibold tracking-wide">Favorite Books</h2>
+    <ul id="books-list" class="list-disc pl-6 mt-2 space-y-1"></ul>
+  </section>
 
-<!-- Favorite Websites & Startups Section (populated by JS) -->
-<section id="favorite-sites" class="section bg-blue-50 rounded-xl mb-6 p-6 shadow transition-colors duration-300">
-  <h2 class="text-blue-700 mb-4 text-2xl font-semibold tracking-wide">Favorite Websites & Startups</h2>
-  <ul id="sites-list" class="list-disc pl-6 mt-2 space-y-1"></ul>
-</section>
+  <!-- Favorite Websites & Startups Section (populated by JS) -->
+  <section id="favorite-sites" class="section bg-blue-50 rounded-xl mb-6 p-6 shadow transition-colors duration-300 fade-section">
+    <h2 class="text-blue-700 mb-4 text-2xl font-semibold tracking-wide">Favorite Websites & Startups</h2>
+    <ul id="sites-list" class="list-disc pl-6 mt-2 space-y-1"></ul>
+  </section>
 
   <!-- Contact Section -->
-  <section id="contact" class="my-8 p-6 bg-white rounded-lg shadow-md max-w-2xl mx-auto">
+  <section id="contact" class="my-8 p-6 bg-white rounded-lg shadow-md max-w-2xl mx-auto fade-section">
     <h2 class="text-2xl font-semibold mb-4">Contact Me</h2>
     <ul class="space-y-2 mb-4">
       <li><a href="tel:+919322491269" class="text-blue-600 hover:underline">📞 +91 9322491269</a></li>
@@ -169,29 +223,29 @@
         <iframe class="w-full h-48 rounded" src="https://www.google.com/maps?q=Palghar,+Maharashtra,+India&output=embed"></iframe>
       </li>
       <li class="flex space-x-4 mt-2">
-        <a href="https://github.com/gharatmanthan" target="_blank" class="hover:text-gray-700">GitHub</a>
-        <a href="https://linkedin.com/in/ManthanGharat" target="_blank" class="hover:text-blue-700">LinkedIn</a>
-        <a href="https://instagram.com/ManthanGharat4" target="_blank" class="hover:text-pink-600">Instagram</a>
-        <a href="https://twitter.com/" target="_blank" class="hover:text-blue-400">Twitter</a>
+        <a href="https://github.com/gharatmanthan" target="_blank" class="hover:text-gray-700 link-animate">GitHub</a>
+        <a href="https://linkedin.com/in/ManthanGharat" target="_blank" class="hover:text-blue-700 link-animate">LinkedIn</a>
+        <a href="https://instagram.com/ManthanGharat4" target="_blank" class="hover:text-pink-600 link-animate">Instagram</a>
+        <a href="https://twitter.com/" target="_blank" class="hover:text-blue-400 link-animate">Twitter</a>
       </li>
     </ul>
     <form action="https://formspree.io/f/xblobzre" method="POST" class="space-y-2">
       <input type="text" name="name" placeholder="Your Name" required class="border p-2 rounded w-full">
       <input type="email" name="email" placeholder="Your Email" required class="border p-2 rounded w-full">
       <textarea name="message" placeholder="Your Message" required class="border p-2 rounded w-full"></textarea>
-      <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Send</button>
+      <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 btn-animate">Send</button>
     </form>
   </section>
 
-        <footer class="text-center mt-8 py-4 bg-gradient-to-r from-blue-200 to-blue-400 text-gray-800 rounded-lg shadow">
-  <!-- Footer content -->
-</footer>
-    <button id="scrollTopBtn" title="Go to top" class="fixed bottom-6 right-6 bg-blue-600 text-white p-3 rounded-full shadow-lg hover:bg-blue-700 transition hidden z-50">
-  ↑
-</button>
-    <script>
+  <footer class="text-center mt-8 py-4 bg-gradient-to-r from-blue-200 to-blue-400 text-gray-800 rounded-lg shadow fade-section">
+    <!-- Footer content -->
+  </footer>
+  <button id="scrollTopBtn" title="Go to top" class="fixed bottom-6 right-6 bg-blue-600 text-white p-3 rounded-full shadow-lg hover:bg-blue-700 transition hidden z-50 btn-animate">
+    ↑
+  </button>
+  <script>
     // Fade-in sections on scroll
-    const sections = document.querySelectorAll('.section');
+    const sections = document.querySelectorAll('.fade-section');
     const observer = new IntersectionObserver(entries => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -201,7 +255,6 @@
     }, { threshold: 0.15 });
 
     sections.forEach(section => {
-        section.classList.add('fade-section');
         observer.observe(section);
     });
 
@@ -215,6 +268,41 @@
             photo.classList.remove('photo-pop');
         });
     }
+
+    // Animate loader fade out
+    window.addEventListener('load', () => {
+      const loader = document.getElementById('loader');
+      loader.style.transition = 'opacity 0.6s cubic-bezier(.4,0,.2,1)';
+      loader.style.opacity = 0;
+      setTimeout(() => loader.style.display = 'none', 600);
+    });
+
+    // Animate navbar on load
+    window.addEventListener('DOMContentLoaded', () => {
+      document.getElementById('main-navbar').classList.add('visible');
+    });
+
+    // Hamburger menu toggle
+    const menuBtn = document.getElementById('menu-btn');
+    const navItems = document.getElementById('nav-items');
+    if (menuBtn && navItems) {
+      menuBtn.addEventListener('click', () => {
+        navItems.classList.toggle('hidden');
+      });
+    }
+
+    // Scroll-to-top button
+    const scrollBtn = document.getElementById('scrollTopBtn');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 300) {
+        scrollBtn.classList.remove('hidden');
+      } else {
+        scrollBtn.classList.add('hidden');
+      }
+    });
+    scrollBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
 
     // Fetch and display data from data.json
     fetch('data.json')
@@ -241,39 +329,6 @@
           sitesList.innerHTML = sites.map(s => `<li><strong>${s.title}</strong>: ${s.reason}</li>`).join('');
         }
       });
-
-    // Hamburger menu toggle
-    const menuBtn = document.getElementById('menu-btn');
-    const navItems = document.getElementById('nav-items');
-    if (menuBtn && navItems) {
-      menuBtn.addEventListener('click', () => {
-        navItems.classList.toggle('hidden');
-      });
-    }
-
-    // Scroll-to-top button
-    const scrollBtn = document.getElementById('scrollTopBtn');
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 300) {
-        scrollBtn.classList.remove('hidden');
-      } else {
-        scrollBtn.classList.add('hidden');
-      }
-    });
-    scrollBtn.addEventListener('click', () => {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-
-    // Hide loader after page load
-    window.addEventListener('load', () => {
-      document.getElementById('loader').style.display = 'none';
-    });
-
-    // Animate navbar on load
-    window.addEventListener('DOMContentLoaded', () => {
-      document.getElementById('main-navbar').classList.add('visible');
-    });
-    </script>
-  </div>
+  </script>
 </body>
 </html>
