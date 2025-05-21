@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Add Tailwind CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-br from-blue-100 to-blue-200 text-gray-900 font-sans">
+  <!-- Sticky Navbar -->
+  <nav class="sticky top-0 z-50 bg-white/80 backdrop-blur shadow flex justify-between items-center px-8 py-3 mb-8 rounded-b-xl">
+    <span class="font-bold text-xl tracking-wide">Manthan Gharat</span>
+    <ul class="flex gap-6 text-gray-700 font-medium">
+      <li><a href="#about" class="hover:text-blue-600 transition">About</a></li>
+      <li><a href="#projects" class="hover:text-blue-600 transition">Projects</a></li>
+      <li><a href="#goals" class="hover:text-blue-600 transition">Goals</a></li>
+      <li><a href="#contact" class="hover:text-blue-600 transition">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="flex flex-col md:flex-row items-center gap-8 mb-12 px-4" id="hero">
+    <img src="images/IMG_20241204_0001.jpg" alt="Profile photo of Manthan Gharat"
+      class="w-40 h-40 rounded-full border-4 border-blue-300 shadow-lg object-cover transition-transform duration-200 hover:scale-105 hover:-rotate-2" />
+    <div>
+      <h1 class="text-4xl md:text-5xl font-bold mb-2 tracking-wide">Hi, I'm Manthan Gharat</h1>
+      <p class="text-lg text-gray-700 mb-4 max-w-xl">Aspiring Full Stack Developer | B.Tech in Computer Engineering | Passionate about building elegant, impactful web solutions.</p>
+      <div class="flex gap-4 mt-2">
+        <a href="https://github.com/gharatmanthan" target="_blank" class="hover:text-gray-700">GitHub</a>
+        <a href="https://linkedin.com/in/ManthanGharat" target="_blank" class="hover:text-blue-700">LinkedIn</a>
+        <a href="https://instagram.com/ManthanGharat4" target="_blank" class="hover:text-pink-600">Instagram</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Intro Video Section -->
+<section id="intro-video" class="flex flex-col items-center justify-center mb-12 px-4">
+  <h2 class="text-2xl font-semibold text-blue-700 mb-4">Intro Video</h2>
+  <video controls class="rounded-xl shadow-lg w-full max-w-xl bg-black">
+    <source src="images/Web Design Promotional Video - After Effects Template.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+</section>
+
+  <!-- About Me Section -->
+  <section id="about" class="bg-white/90 rounded-xl shadow p-8 mb-12 max-w-3xl mx-auto">
+    <h2 class="text-2xl font-semibold text-blue-700 mb-4">About Me</h2>
+    <p class="mb-2"><strong>Name:</strong> Manthan Gharat</p>
+    <p class="mb-2"><strong>Location:</strong> Palghar</p>
+    <p class="mb-2"><strong>Education:</strong> B.Tech in Computer Engineering (pursuing)</p>
+    <p class="mb-2"><strong>Languages Known:</strong> Marathi, English, Hindi</p>
+    <p class="mb-2">I love learning new technologies, solving problems, and collaborating on meaningful projects. My goal is to become a skilled full-stack developer and contribute to impactful products.</p>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects" class="max-w-3xl mx-auto mb-12 px-4">
+    <h2 class="text-2xl font-semibold text-blue-700 mb-6 text-center">Projects</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 justify-items-center">
+      <!-- Example Project Card -->
+      <div class="bg-white rounded-xl shadow hover:shadow-xl transition p-6 flex flex-col items-center group text-center w-full">
+        <h3 class="text-lg font-bold mb-2 group-hover:text-blue-600 transition">Portfolio Website</h3>
+        <p class="text-gray-600 mb-4">A responsive personal portfolio built with HTML, Tailwind CSS, and JavaScript, featuring dynamic data and a contact form.</p>
+        <a href="#" class="mt-auto text-blue-500 hover:underline">View Project</a>
+      </div>
+      <div class="bg-white rounded-xl shadow hover:shadow-xl transition p-6 flex flex-col items-center group text-center w-full">
+        <h3 class="text-lg font-bold mb-2 group-hover:text-blue-600 transition">Weather App</h3>
+        <p class="text-gray-600 mb-4">A simple weather dashboard using a public API, showing real-time weather for any city.</p>
+        <a href="#" class="mt-auto text-blue-500 hover:underline">View Project</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Future Goals Section -->
+<section id="goals" class="section bg-blue-50 rounded-xl mb-6 p-6 shadow transition-colors duration-300">
+  <h2 class="text-blue-700 mb-4 text-2xl font-semibold tracking-wide">Future Goals</h2>
+  <p>
+    Focus on mastering a full-stack JavaScript stack (React, Node, PostgreSQL) by completing an online course and rebuilding three classic apps, while pushing code to GitHub daily; ship two polished portfolio projects that solve real problems and include tests, CI/CD, and live demos; contribute at least five pull requests to open-source repos; practice 200 LeetCode problems plus weekly mock interviews to nail data-structures, algorithms, and system design; craft an ATS-ready one-page résumé and showcase projects on LinkedIn; attend three dev meetups per semester and follow up with new contacts; apply to 15 internships or freelance gigs each month until placed; stay current with a weekly tech newsletter and publish a monthly blog post, all while scheduling regular exercise and one screen-free day each month to prevent burnout and keep motivation high.
+  </p>
+</section>
+
+<!-- Hobbies Section (populated by JS) -->
+<section id="hobbies" class="section bg-blue-50 rounded-xl mb-6 p-6 shadow transition-colors duration-300">
+  <h2 class="text-blue-700 mb-4 text-2xl font-semibold tracking-wide">Hobbies</h2>
+  <ul id="hobbies-list" class="list-disc pl-6 mt-2 space-y-1"></ul>
+</section>
+
+<!-- Role Models Section -->
+<section id="role-models" class="section bg-blue-50 rounded-xl mb-6 p-6 shadow transition-colors duration-300">
+  <h2 class="text-blue-700 mb-4 text-2xl font-semibold tracking-wide">Role Models</h2>
+  <p>
+    My role model is Elon Musk because he consistently turns bold, seemingly impossible ideas—reusable rockets, mass-market EVs, global satellite internet—into reality by pairing relentless curiosity with calculated risk-taking, proving that audacious vision backed by deep technical engagement and a “first-principles” mindset can reshape entire industries and push humanity forward.
+  </p>
+</section>
+
+<!-- Favorite Books Section (populated by JS) -->
+<section id="favorite-books" class="section bg-blue-50 rounded-xl mb-6 p-6 shadow transition-colors duration-300">
+  <h2 class="text-blue-700 mb-4 text-2xl font-semibold tracking-wide">Favorite Books</h2>
+  <ul id="books-list" class="list-disc pl-6 mt-2 space-y-1"></ul>
+</section>
+
+<!-- Favorite Websites & Startups Section (populated by JS) -->
+<section id="favorite-sites" class="section bg-blue-50 rounded-xl mb-6 p-6 shadow transition-colors duration-300">
+  <h2 class="text-blue-700 mb-4 text-2xl font-semibold tracking-wide">Favorite Websites & Startups</h2>
+  <ul id="sites-list" class="list-disc pl-6 mt-2 space-y-1"></ul>
+</section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="my-8 p-6 bg-white rounded-lg shadow-md max-w-2xl mx-auto">
+    <h2 class="text-2xl font-semibold mb-4">Contact Me</h2>
+    <ul class="space-y-2 mb-4">
+      <li><a href="tel:+919322491269" class="text-blue-600 hover:underline">📞 +91 9322491269</a></li>
+      <li><a href="https://wa.me/9322491269" target="_blank" class="text-green-600 hover:underline">💬 WhatsApp Chat</a></li>
+      <li><a href="mailto:122manthan2109@sjcem.edu.in" class="text-red-600 hover:underline">✉️ 122manthan2109@sjcem.edu.in</a></li>
+      <li>
+        <iframe class="w-full h-48 rounded" src="https://www.google.com/maps?q=Palghar,+Maharashtra,+India&output=embed"></iframe>
+      </li>
+      <li class="flex space-x-4 mt-2">
+        <a href="https://github.com/gharatmanthan" target="_blank" class="hover:text-gray-700">GitHub</a>
+        <a href="https://linkedin.com/in/ManthanGharat" target="_blank" class="hover:text-blue-700">LinkedIn</a>
+        <a href="https://instagram.com/ManthanGharat4" target="_blank" class="hover:text-pink-600">Instagram</a>
+        <a href="https://twitter.com/" target="_blank" class="hover:text-blue-400">Twitter</a>
+      </li>
+    </ul>
+    <form action="https://formspree.io/f/xblobzre" method="POST" class="space-y-2">
+      <input type="text" name="name" placeholder="Your Name" required class="border p-2 rounded w-full">
+      <input type="email" name="email" placeholder="Your Email" required class="border p-2 rounded w-full">
+      <textarea name="message" placeholder="Your Message" required class="border p-2 rounded w-full"></textarea>
+      <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Send</button>
+    </form>
+  </section>
+
+        <footer class="text-center mt-8 py-4 bg-gradient-to-r from-blue-200 to-blue-400 text-gray-800 rounded-lg shadow">
+  <!-- Footer content -->
+</footer>
+    </div>
+    <script>
+    // Fade-in sections on scroll
+    const sections = document.querySelectorAll('.section');
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, { threshold: 0.15 });
+
+    sections.forEach(section => {
+        section.classList.add('fade-section');
+        observer.observe(section);
+    });
+
+    // Profile photo hover effect
+    const photo = document.querySelector('.profile-photo');
+    if(photo) {
+        photo.addEventListener('mouseenter', () => {
+            photo.classList.add('photo-pop');
+        });
+        photo.addEventListener('mouseleave', () => {
+            photo.classList.remove('photo-pop');
+        });
+    }
+
+    // Fetch and display data from data.json
+    fetch('data.json')
+      .then(response => response.json())
+      .then(data => {
+        // Hobbies
+        const hobbies = data.filter(item => item.type === 'hobby');
+        const hobbiesList = document.getElementById('hobbies-list');
+        if (hobbiesList) {
+          hobbiesList.innerHTML = hobbies.map(h => `<li>${h.title}</li>`).join('');
+        }
+
+        // Favorite Books
+        const books = data.filter(item => item.type === 'book');
+        const booksList = document.getElementById('books-list');
+        if (booksList) {
+          booksList.innerHTML = books.map(b => `<li><strong>${b.title}</strong>: ${b.reason}</li>`).join('');
+        }
+
+        // Favorite Websites & Startups
+        const sites = data.filter(item => item.type === 'website' || item.type === 'startup');
+        const sitesList = document.getElementById('sites-list');
+        if (sitesList) {
+          sitesList.innerHTML = sites.map(s => `<li><strong>${s.title}</strong>: ${s.reason}</li>`).join('');
+        }
+      });
+    </script>
+  </div>
+</body>
+</html>

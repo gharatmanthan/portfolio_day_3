@@ -1,0 +1,40 @@
+[
+  {
+    "type": "achievement",
+    "title": ".NET course completed",
+    "year": 2024
+  },
+  {
+    "type": "achievement",
+    "title": "4th in the blind C",
+    "year": 2023
+  },
+  {
+    "type": "book",
+    "title": "Rich Dad Poor Dad",
+    "reason": "Teaches financial literacy in a simple way."
+  },
+  {
+    "type": "startup",
+    "title": "GitHub",
+    "reason": "Best place for developer collaboration."
+  },
+  {
+    "type": "hobby",
+    "title": "Gaming"
+  },
+  {
+    "type": "hobby",
+    "title": "Listening to music"
+  },
+  {
+    "type": "website",
+    "title": "Stack Overflow",
+    "reason": "Essential for programming help."
+  },
+  {
+    "type": "website",
+    "title": "MDN Web Docs",
+    "reason": "Great resource for web developers."
+  }
+]
