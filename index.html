@@ -16,6 +16,34 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <!-- Add Tailwind CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* Navbar entrance animation */
+    .navbar-animate {
+      opacity: 0;
+      transform: translateY(-40px);
+      transition: opacity 0.7s cubic-bezier(.4,0,.2,1), transform 0.7s cubic-bezier(.4,0,.2,1);
+    }
+    .navbar-animate.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    /* Brand gradient text on hover */
+    .brand-gradient {
+      background: linear-gradient(90deg, #2563eb 0%, #38bdf8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      transition: background 0.4s;
+    }
+    .brand-gradient:hover {
+      background: linear-gradient(90deg, #38bdf8 0%, #2563eb 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    /* Hamburger tap animation */
+    .tap:active {
+      transform: scale(0.9);
+    }
+  </style>
 </head>
 <body class="bg-gradient-to-br from-blue-100 to-blue-200 text-gray-900 font-sans">
   <!-- Loader -->
@@ -24,28 +52,30 @@
   </div>
 
   <!-- Sticky Navbar -->
-  <nav class="sticky top-0 z-50 bg-white/80 backdrop-blur shadow flex justify-between items-center px-8 py-3 mb-8 rounded-b-xl">
-    <span class="font-bold text-xl tracking-wide">Manthan Gharat</span>
+  <nav id="main-navbar" class="navbar-animate sticky top-0 z-50 bg-white/70 backdrop-blur-lg shadow-lg flex justify-between items-center px-6 py-4 mb-10 rounded-b-2xl border-b border-blue-200 transition-all duration-300">
+    <a href="#" class="brand-gradient font-extrabold text-2xl tracking-widest hover:drop-shadow-xl transition-all duration-300">
+      Manthan Gharat
+    </a>
     <!-- Hamburger Icon (hidden on md+) -->
-    <button id="menu-btn" class="md:hidden block focus:outline-none" aria-label="Open navigation">
-      <svg class="w-8 h-8 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <button id="menu-btn" class="md:hidden block focus:outline-none p-2 rounded hover:bg-blue-100 transition tap" aria-label="Open navigation">
+      <svg class="w-8 h-8 text-blue-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
           d="M4 6h16M4 12h16M4 18h16" />
       </svg>
     </button>
     <!-- Nav Items -->
-    <ul id="nav-items" class="flex gap-6 text-gray-700 font-medium md:flex hidden flex-col md:flex-row absolute md:static top-16 left-0 w-full md:w-auto bg-white md:bg-transparent shadow md:shadow-none rounded-b-xl md:rounded-none px-8 md:px-0 py-4 md:py-0 z-40">
-      <li><a href="#about" class="hover:text-blue-600 transition">About</a></li>
-      <li><a href="#projects" class="hover:text-blue-600 transition">Projects</a></li>
-      <li><a href="#goals" class="hover:text-blue-600 transition">Goals</a></li>
-      <li><a href="#contact" class="hover:text-blue-600 transition">Contact</a></li>
+    <ul id="nav-items" class="flex gap-6 text-blue-800 font-semibold md:flex hidden flex-col md:flex-row absolute md:static top-20 left-0 w-full md:w-auto bg-white/95 md:bg-transparent shadow md:shadow-none rounded-b-2xl md:rounded-none px-8 md:px-0 py-6 md:py-0 z-40 transition-all duration-300">
+      <li><a href="#about" class="hover:text-blue-600 hover:scale-110 transition-transform duration-200">About</a></li>
+      <li><a href="#projects" class="hover:text-blue-600 hover:scale-110 transition-transform duration-200">Projects</a></li>
+      <li><a href="#goals" class="hover:text-blue-600 hover:scale-110 transition-transform duration-200">Goals</a></li>
+      <li><a href="#contact" class="hover:text-blue-600 hover:scale-110 transition-transform duration-200">Contact</a></li>
     </ul>
   </nav>
 
   <!-- Hero Section -->
   <section class="flex flex-col md:flex-row items-center gap-8 mb-12 px-4" id="hero">
     <img src="images/IMG_20241204_0001.jpg" alt="Profile photo of Manthan Gharat"
-      class="w-40 h-40 rounded-full border-4 border-blue-300 shadow-lg object-cover transition-transform duration-200 hover:scale-105 hover:-rotate-2" />
+      class="profile-photo w-40 h-40 rounded-full border-4 border-blue-300 shadow-lg object-cover transition-transform duration-200 hover:scale-105 hover:-rotate-2" />
     <div>
       <h1 class="text-4xl md:text-5xl font-bold mb-2 tracking-wide">Hi, I'm Manthan Gharat</h1>
       <p class="text-lg text-gray-700 mb-4 max-w-xl">Aspiring Full Stack Developer | B.Tech in Computer Engineering | Passionate about building elegant, impactful web solutions.</p>
@@ -156,7 +186,6 @@
         <footer class="text-center mt-8 py-4 bg-gradient-to-r from-blue-200 to-blue-400 text-gray-800 rounded-lg shadow">
   <!-- Footer content -->
 </footer>
-    </div>
     <button id="scrollTopBtn" title="Go to top" class="fixed bottom-6 right-6 bg-blue-600 text-white p-3 rounded-full shadow-lg hover:bg-blue-700 transition hidden z-50">
   ↑
 </button>
@@ -238,6 +267,11 @@
     // Hide loader after page load
     window.addEventListener('load', () => {
       document.getElementById('loader').style.display = 'none';
+    });
+
+    // Animate navbar on load
+    window.addEventListener('DOMContentLoaded', () => {
+      document.getElementById('main-navbar').classList.add('visible');
     });
     </script>
   </div>
