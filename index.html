@@ -46,9 +46,26 @@
       background-clip: text;
       -webkit-text-fill-color: transparent;
     }
-    /* Hamburger tap animation */
-    .tap:active {
-      transform: scale(0.9);
+    /* Hamburger menu styles */
+    .hamburger-line {
+      transition: all 0.3s ease;
+    }
+    .hamburger.open .hamburger-line:nth-child(1) {
+      transform: translateY(8px) rotate(45deg);
+    }
+    .hamburger.open .hamburger-line:nth-child(2) {
+      opacity: 0;
+    }
+    .hamburger.open .hamburger-line:nth-child(3) {
+      transform: translateY(-8px) rotate(-45deg);
+    }
+    /* Mobile menu styles */
+    #nav-items {
+      transition: transform 0.3s ease-in-out;
+      transform: translateX(100%);
+    }
+    #nav-items.open {
+      transform: translateX(0);
     }
     /* Section fade-in animation */
     .fade-section {
@@ -103,8 +120,8 @@
       transform: scaleX(1);
     }
     html {
-  scroll-behavior: smooth;
-}
+      scroll-behavior: smooth;
+    }
   </style>
 </head>
 <body class="bg-gradient-to-br from-blue-100 to-blue-200 text-gray-900 font-sans">
@@ -114,44 +131,41 @@
   </div>
 
   <!-- Sticky Navbar -->
-  <nav id="main-navbar" class="navbar-animate sticky top-0 z-50 bg-white/70 backdrop-blur-lg shadow-lg flex justify-between items-center px-6 py-4 mb-10 rounded-b-2xl border-b border-blue-200 transition-all duration-300">
-    <a href="#" class="brand-gradient font-extrabold text-2xl tracking-widest hover:drop-shadow-xl transition-all duration-300">
-      Manthan Portfolio
+   <nav id="main-navbar" class="navbar-animate sticky top-0 z-50 bg-white/70 backdrop-blur-lg shadow-lg flex justify-between items-center px-6 py-4 mb-10 rounded-b-2xl border-b border-blue-200 transition-all duration-300">
+        <a href="#" class="brand-gradient font-extrabold text-2xl tracking-widest hover:drop-shadow-xl transition-all duration-300">
+            Manthan Portfolio
     </a>
     <!-- Hamburger Icon (hidden on md+) -->
-    <button id="menu-btn" class="md:hidden block focus:outline-none p-2 rounded hover:bg-blue-100 transition tap" aria-label="Open navigation">
-      <svg class="w-8 h-8 text-blue-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-          d="M4 6h16M4 12h16M4 18h16" />
-      </svg>
+    <button id="menu-btn" class="md:hidden block focus:outline-none p-2" aria-label="Toggle navigation">
+      <div class="hamburger">
+        <span class="hamburger-line block w-8 h-1 bg-blue-700 my-1 rounded transition-all duration-300"></span>
+        <span class="hamburger-line block w-8 h-1 bg-blue-700 my-1 rounded transition-all duration-300"></span>
+        <span class="hamburger-line block w-8 h-1 bg-blue-700 my-1 rounded transition-all duration-300"></span>
+      </div>
     </button>
     <!-- Overlay for mobile menu -->
-    <div id="menu-overlay" class="fixed inset-0 bg-black bg-opacity-40 z-40 transition-opacity duration-300 opacity-0 pointer-events-none md:hidden"></div>
+    <div id="menu-overlay" class="menu-overlay fixed inset-0 bg-black bg-opacity-40 z-40 md:hidden hidden"></div>
     <!-- Nav Items -->
-    <ul
-      id="nav-items"
-      class="flex gap-6 text-blue-800 font-semibold
-             md:flex flex-col md:flex-row
-             fixed md:static top-0 right-0 h-full w-3/4 max-w-xs bg-white/95 md:bg-transparent shadow-lg md:shadow-none
-             rounded-l-2xl md:rounded-none px-8 md:px-0 py-16 md:py-0 z-50
-             transform translate-x-full md:translate-x-0 transition-transform duration-300"
-    >
+     <ul id="nav-items" class="flex gap-6 text-blue-800 font-semibold
+               md:flex flex-col md:flex-row
+               fixed md:static top-0 right-0 h-full w-3/4 max-w-xs bg-white/95 md:bg-transparent shadow-lg md:shadow-none
+               rounded-l-2xl md:rounded-none px-8 md:px-0 py-16 md:py-0 z-50">
       <!-- Back button (only visible on mobile menu) -->
       <li class="block md:hidden mb-8">
-        <button id="menu-back" class="flex items-center gap-2 text-blue-700 font-semibold hover:text-blue-900 transition">
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
-          </svg>
-          Back
-        </button>
-      </li>
-      <li><a href="#home" class="hover:text-blue-600 hover:scale-110 transition-transform duration-200 link-animate">Home</a></li>
-      <li><a href="#about" class="hover:text-blue-600 hover:scale-110 transition-transform duration-200 link-animate">About</a></li>
-      <li><a href="#projects" class="hover:text-blue-600 hover:scale-110 transition-transform duration-200 link-animate">Projects</a></li>
-      <li><a href="#goals" class="hover:text-blue-600 hover:scale-110 transition-transform duration-200 link-animate">Goals</a></li>
-      <li><a href="#contact" class="hover:text-blue-600 hover:scale-110 transition-transform duration-200 link-animate">Contact</a></li>
-    </ul>
-  </nav>
+                <button id="menu-back" class="flex items-center gap-2 text-blue-700 font-semibold hover:text-blue-900 transition">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                    </svg>
+                    Back
+                </button>
+            </li>
+       <li><a href="#home" class="hover:text-blue-600 hover:scale-110 transition-transform duration-200 link-animate">Home</a></li>
+            <li><a href="#about" class="hover:text-blue-600 hover:scale-110 transition-transform duration-200 link-animate">About</a></li>
+            <li><a href="#projects" class="hover:text-blue-600 hover:scale-110 transition-transform duration-200 link-animate">Projects</a></li>
+            <li><a href="#goals" class="hover:text-blue-600 hover:scale-110 transition-transform duration-200 link-animate">Goals</a></li>
+            <li><a href="#contact" class="hover:text-blue-600 hover:scale-110 transition-transform duration-200 link-animate">Contact</a></li>
+        </ul>
+    </nav>
 
   <!-- Hero Section -->
   <section id="home" class="flex flex-col md:flex-row items-center gap-8 mb-12 px-4 fade-section">
@@ -254,6 +268,22 @@
     </div>
   </section>
 
+  <!-- Achievements Section -->
+  <section id="achievements" class="relative bg-gradient-to-br from-red-50 via-blue-50 to-white border-l-4 border-red-400 rounded-xl mb-8 p-8 shadow-lg fade-section">
+    <div class="absolute left-0 top-6 flex items-center justify-center w-8 h-8 bg-red-400 text-white rounded-full shadow -translate-x-1/2">
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+    </div>
+    <h2 class="text-red-700 mb-4 text-3xl font-extrabold tracking-wide pl-10" style="font-family: 'Montserrat', sans-serif;">
+      Achievements
+    </h2>
+    <ul class="pl-10 space-y-2" style="font-family: 'Inter', sans-serif;">
+      <li>• Won first prize in college coding competition (2023)</li>
+      <li>• Completed Google Cloud Fundamentals certification</li>
+      <li>• Published article on "Web Development Trends" in college magazine</li>
+      <li>• Selected for prestigious summer internship program</li>
+    </ul>
+  </section>
+
   <!-- Future Goals Section -->
   <section id="goals" class="relative bg-gradient-to-br from-blue-50 via-blue-100 to-white border-l-4 border-blue-400 rounded-xl mb-8 p-8 shadow-lg fade-section">
     <div class="absolute left-0 top-6 flex items-center justify-center w-8 h-8 bg-blue-400 text-white rounded-full shadow -translate-x-1/2">
@@ -265,6 +295,26 @@
     <p class="text-lg leading-relaxed text-gray-700 pl-10 font-light" style="font-family: 'Inter', sans-serif;">
       Focus on mastering a full-stack JavaScript stack (React, Node, PostgreSQL) by completing an online course and rebuilding three classic apps, while pushing code to GitHub daily; ship two polished portfolio projects that solve real problems and include tests, CI/CD, and live demos; contribute at least five pull requests to open-source repos; practice 200 LeetCode problems plus weekly mock interviews to nail data-structures, algorithms, and system design; craft an ATS-ready one-page résumé and showcase projects on LinkedIn; attend three dev meetups per semester and follow up with new contacts; apply to 15 internships or freelance gigs each month until placed; stay current with a weekly tech newsletter and publish a monthly blog post, all while scheduling regular exercise and one screen-free day each month to prevent burnout and keep motivation high.
     </p>
+  </section>
+
+  <!-- Volunteering Section -->
+  <section id="volunteering" class="relative bg-gradient-to-br from-teal-50 via-blue-50 to-white border-l-4 border-teal-400 rounded-xl mb-8 p-8 shadow-lg fade-section">
+    <div class="absolute left-0 top-6 flex items-center justify-center w-8 h-8 bg-teal-400 text-white rounded-full shadow -translate-x-1/2">
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+    </div>
+    <h2 class="text-teal-700 mb-4 text-3xl font-extrabold tracking-wide pl-10" style="font-family: 'Montserrat', sans-serif;">
+      Volunteering
+    </h2>
+    <div class="pl-10 space-y-4" style="font-family: 'Inter', sans-serif;">
+      <div>
+        <h3 class="font-bold">Tech Education for Underprivileged Students</h3>
+        <p class="text-gray-600">Volunteered as a coding instructor, teaching basic programming concepts to students from low-income communities through weekend workshops.</p>
+      </div>
+      <div>
+        <h3 class="font-bold">Community Cleanup Initiative</h3>
+        <p class="text-gray-600">Organized and participated in monthly neighborhood cleanup drives, promoting environmental awareness.</p>
+      </div>
+    </div>
   </section>
 
   <!-- Hobbies Section (populated by JS) -->
@@ -287,7 +337,7 @@
       Role Models
     </h2>
     <p class="text-lg leading-relaxed text-gray-700 pl-10" style="font-family: 'Inter', sans-serif;">
-      My role model is Elon Musk because he consistently turns bold, seemingly impossible ideas—reusable rockets, mass-market EVs, global satellite internet—into reality by pairing relentless curiosity with calculated risk-taking, proving that audacious vision backed by deep technical engagement and a “first-principles” mindset can reshape entire industries and push humanity forward.
+      My role model is Elon Musk because he consistently turns bold, seemingly impossible ideas—reusable rockets, mass-market EVs, global satellite internet—into reality by pairing relentless curiosity with calculated risk-taking, proving that audacious vision backed by deep technical engagement and a "first-principles" mindset can reshape entire industries and push humanity forward.
     </p>
   </section>
 
@@ -351,7 +401,7 @@
   </section>
 
   <footer class="text-center mt-8 py-4 bg-gradient-to-r from-blue-200 to-blue-400 text-gray-800 rounded-lg shadow fade-section">
-    <!-- Footer content -->
+    <p>© 2023 Manthan Gharat. All rights reserved.</p>
   </footer>
   <button id="scrollTopBtn" title="Go to top" class="fixed bottom-6 right-6 bg-blue-600 text-white p-3 rounded-full shadow-lg hover:bg-blue-700 transition hidden z-50 btn-animate">
     ↑
@@ -397,30 +447,43 @@
 
     // Hamburger menu toggle (slide in from right on mobile)
     const menuBtn = document.getElementById('menu-btn');
+    const hamburger = document.querySelector('.hamburger');
     const navItems = document.getElementById('nav-items');
     const menuOverlay = document.getElementById('menu-overlay');
     const menuBack = document.getElementById('menu-back');
 
-    function openMenu() {
-      navItems.classList.remove('translate-x-full');
-      navItems.classList.add('translate-x-0');
-      menuOverlay.classList.remove('opacity-0', 'pointer-events-none');
-      menuOverlay.classList.add('opacity-100');
-    }
-    function closeMenu() {
-      navItems.classList.add('translate-x-full');
-      navItems.classList.remove('translate-x-0');
-      menuOverlay.classList.add('opacity-0', 'pointer-events-none');
-      menuOverlay.classList.remove('opacity-100');
+    function toggleMenu() {
+        hamburger.classList.toggle('open');
+        navItems.classList.toggle('open');
+        menuOverlay.classList.toggle('hidden');
+        document.body.classList.toggle('overflow-hidden');
     }
 
-    if (menuBtn && navItems && menuOverlay) {
-      menuBtn.addEventListener('click', openMenu);
-      menuOverlay.addEventListener('click', closeMenu);
-    }
-    if (menuBack) {
-      menuBack.addEventListener('click', closeMenu);
-    }
+    // Event listeners
+    if (menuBtn) menuBtn.addEventListener('click', toggleMenu);
+    if (menuOverlay) menuOverlay.addEventListener('click', toggleMenu);
+    if (menuBack) menuBack.addEventListener('click', toggleMenu);
+
+    // Close menu when clicking on nav links (for mobile)
+    document.querySelectorAll('#nav-items a').forEach(link => {
+        link.addEventListener('click', () => {
+            if (window.innerWidth < 768) {
+                toggleMenu();
+            }
+        });
+    });
+
+    // Close menu when clicking outside of it
+    document.addEventListener('click', (event) => {
+      if (
+        navItems.classList.contains('open') &&
+        !menuBtn.contains(event.target) &&
+        !navItems.contains(event.target) &&
+        !menuOverlay.contains(event.target)
+      ) {
+        toggleMenu();
+      }
+    }); 
 
     // Scroll-to-top button
     const scrollBtn = document.getElementById('scrollTopBtn');
