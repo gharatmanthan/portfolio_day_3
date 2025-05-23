@@ -254,6 +254,46 @@
       </div>
     </div>
   </section>
+  <section id="weather" class="max-w-xl mx-auto mb-12 px-4 py-8 bg-white rounded-xl shadow fade-section">
+  <h2 class="text-2xl font-semibold text-blue-700 mb-4">Check Weather</h2>
+  <form id="weather-form" class="flex gap-2 mb-4">
+    <input type="text" id="city-input" placeholder="Enter city name" required class="border p-2 rounded w-full" />
+    <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 btn-animate">Get Weather</button>
+  </form>
+  <div id="weather-result" class="text-center"></div>
+</section>
+
+<script>
+  // Weather API (Weatherstack)
+  document.getElementById('weather-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const city = document.getElementById('city-input').value.trim();
+    const resultDiv = document.getElementById('weather-result');
+    if (!city) return;
+    resultDiv.innerHTML = 'Loading...';
+
+    const apiKey = 'e924aa50d7ac879fda05e868f390dbcc';
+    fetch(`http://api.weatherstack.com/current?access_key=${apiKey}&query=${encodeURIComponent(city)}`)
+      .then(res => res.json())
+      .then(data => {
+        if (!data.current || data.success === false) {
+          resultDiv.innerHTML = `<span class="text-red-600">City not found or API error.</span>`;
+        } else {
+          resultDiv.innerHTML = `
+            <div class="flex flex-col items-center">
+              <span class="text-xl font-bold">${data.location.name}, ${data.location.country}</span>
+              <span class="text-3xl font-extrabold text-blue-700">${data.current.temperature}°C</span>
+              <span class="capitalize">${data.current.weather_descriptions[0]}</span>
+              <img src="${data.current.weather_icons[0]}" alt="icon" />
+            </div>
+          `;
+        }
+      })
+      .catch(() => {
+        resultDiv.innerHTML = `<span class="text-red-600">Error fetching weather.</span>`;
+      });
+  });
+</script>
 
   <!-- Projects Section -->
   <section id="projects" class="max-w-3xl mx-auto mb-12 px-4 fade-section">
